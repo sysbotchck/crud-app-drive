@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Recursos - CRUD</title>
+    <meta name="description" content="Aplicación CRUD moderna para gestionar recursos con imágenes y enlaces de Google Drive">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">
+                <span class="icon">📚</span>
+                Gestor de Recursos
+            </h1>
+            <p class="header-subtitle">Administra tus recursos con estilo</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Form Section -->
+            <section class="form-section glass-card">
+                <h2 class="section-title" id="form-title">
+                    <span class="icon">✨</span>
+                    Crear Nuevo Recurso
+                </h2>
+                
+                <form id="item-form" class="item-form">
+                    <input type="hidden" id="item-id">
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <span class="icon">🏷️</span>
+                            Nombre
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="form-input" 
+                            placeholder="Ingresa el nombre del recurso"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageUrl" class="form-label">
+                            <span class="icon">🖼️</span>
+                            URL de Imagen
+                        </label>
+                        <input 
+                            type="url" 
+                            id="imageUrl" 
+                            class="form-input" 
+                            placeholder="https://ejemplo.com/imagen.jpg"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="driveUrl" class="form-label">
+                            <span class="icon">📁</span>
+                            URL de Google Drive
+                        </label>
+                        <input 
+                            type="url" 
+                            id="driveUrl" 
+                            class="form-input" 
+                            placeholder="https://drive.google.com/..."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <span class="icon">💾</span>
+                            Guardar Recurso
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">
+                            <span class="icon">❌</span>
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- List Section -->
+            <section class="list-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="icon">📋</span>
+                        Recursos Guardados
+                    </h2>
+                    <div class="item-count">
+                        <span id="item-count">0</span> recursos
+                    </div>
+                </div>
+
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando recursos...</p>
+                </div>
+
+                <div id="empty-state" class="empty-state" style="display: none;">
+                    <span class="empty-icon">📭</span>
+                    <h3>No hay recursos todavía</h3>
+                    <p>Crea tu primer recurso usando el formulario de arriba</p>
+                </div>
+
+                <div id="items-grid" class="items-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3 class="modal-title">
+                <span class="icon">⚠️</span>
+                Confirmar Eliminación
+            </h3>
+            <p class="modal-text">¿Estás seguro de que deseas eliminar este recurso? Esta acción no se puede deshacer.</p>
+            <div class="modal-actions">
+                <button class="btn btn-danger" id="confirm-delete">
+                    <span class="icon">🗑️</span>
+                    Eliminar
+                </button>
+                <button class="btn btn-secondary" id="cancel-delete">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

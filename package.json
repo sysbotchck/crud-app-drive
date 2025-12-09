@@ -1,0 +1,23 @@
+{
+    "name": "crud-app",
+    "version": "1.0.0",
+    "description": "CRUD application with MongoDB",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "crud",
+        "mongodb",
+        "express"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "mongoose": "^8.0.0",
+        "cors": "^2.8.5",
+        "body-parser": "^1.20.2"
+    }
+}
